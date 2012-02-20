@@ -13,9 +13,9 @@ function byName(a, b){
 }
 
 function byDate(a, b){
-    var aName = new Date(a.updated_at).milliseconds;
-    var bName = new Date(b.updated_at).milliseconds; 
-    return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+    var aName = new Date(a.updated_at);
+    var bName = new Date(b.updated_at); 
+    return ((aName < bName) ? 1 : ((aName > bName) ? -1 : 0));
 }
 
 function loadRepos(data, textStatus, jqXHR){
