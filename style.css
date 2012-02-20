@@ -1,0 +1,41 @@
+.repo, .box {
+ margin: 0.5em 1em;
+ height: 120px;
+}
+
+.show-grid [class*="span"] {
+ -webkit-border-radius: 5px;
+ -moz-border-radius: 5px;
+ border-radius: 5px;
+ -moz-box-shadow: 1px 1px 7px gray;
+ -webkit-box-shadow: 1px 1px 7px gray;
+ box-shadow: 1px 1px 7px gray;
+}
+
+.show-grid {
+ margin-top: 10px;
+ margin-bottom: 20px;
+}
+
+.repos .span4:hover {
+ cursor: pointer;
+ background-color: #F9F9F9;
+}
+
+.sub {
+ color: gray;
+ font-size: smaller;
+}
+
+.sub a {
+ color: gray;
+}
+
+#updated .sub {
+ display: inline;
+}
+
+h3 a {
+ font-size: 12px;
+ font-weight: normal;
+}
