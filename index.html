@@ -39,7 +39,7 @@ function loadRepos(data, textStatus, jqXHR){
     var updated = jQuery("#updated");
     jQuery.each(repositories.slice(0, 3), function(i, repo){
     	var div = jQuery("<div/>");
-    	jQuery("<a/>").attr("href", repo.html_url).text(repo.name).appendTo(div);
+    	jQuery("<a/>").attr({href: repo.html_url, title: "View project on GitHub"}).text(repo.name).appendTo(div);
     	div.append(" ");
     	repoInfo(repo).appendTo(div);
     	div.appendTo(updated);
@@ -59,18 +59,18 @@ function plural(count, text, pluralText){
 
 function repoInfo(repo){
     var sub = jQuery("<div class='sub'/>");
-    jQuery("<a/>").attr('href', repo.html_url+"/issues").text(plural(repo.open_issues," issue")).appendTo(sub);
+    jQuery("<a/>").attr({href: repo.html_url+"/issues", title: "Issue tracker"}).text(plural(repo.open_issues," issue")).appendTo(sub);
     sub.append(" ⋅ ");
-    jQuery("<a/>").attr('href', repo.html_url+"/watchers").text(plural(repo.watchers, " watcher")).appendTo(sub);
+    jQuery("<a/>").attr({href: repo.html_url+"/watchers", title: "View watchers"}).text(plural(repo.watchers, " watcher")).appendTo(sub);
     sub.append(" ⋅ ");
-    jQuery("<a/>").attr('href', repo.html_url+"/network").text(plural(repo.forks, " fork")).appendTo(sub);
+    jQuery("<a/>").attr({href: repo.html_url+"/network", title: "Fork list"}).text(plural(repo.forks, " fork")).appendTo(sub);
     sub.append(" ⋅ ");
-    jQuery("<a/>").attr('href', repo.html_url+"/commits").text(date(repo.updated_at)).appendTo(sub);
+    jQuery("<a/>").attr({href: repo.html_url+"/commits", title: "Last commit"}).text(date(repo.updated_at)).appendTo(sub);
     return sub;
 }
 
 function addRepo(container, repo){
-	var span = jQuery("<div class='span4'/>");
+	var span = jQuery("<div class='span4' title='Click to view project on GitHub''/>");
 	var div = jQuery("<div class='repo'/>").appendTo(span);
 	
 	jQuery("<h3/>").text(repo.name).appendTo(div);
@@ -78,7 +78,7 @@ function addRepo(container, repo){
 
     repoInfo(repo).appendTo(div);
     
-    var fork = jQuery("<a/>").attr('href', repo.html_url+"/fork_select").appendTo(div);
+    var fork = jQuery("<a/>").attr({href: repo.html_url+"/fork_select", title: "Fork on GitHub"}).appendTo(div);
     jQuery("<i class='icon-share-alt'></i>").appendTo(fork);
     fork.append("Fork");
     
@@ -104,27 +104,27 @@ jQuery(function (){
     <body>
         <div class="container" id="container">
             <div class='page-header'>
-                <a href="http://ceylon-lang.org" title="Ceylon documentation"><img src="elephant-100.png" alt="Ceylon Logo" class="logo"/></a>
+                <a href="http://ceylon-lang.org" title="Go to Ceylon home page"><img src="elephant-100.png" alt="Ceylon Logo" class="logo"/></a>
                 <h1>Ceylon Open-Source repositories</h1>
                 <p class="lead">
                     Ceylon is open-source software, you can find here all the repositories related to Ceylon.
                     Fork at will :)
                 </p>
                 <p class="links">
-                    <a href="http://ceylon-lang.org"><i class="icon-home"></i>Ceylon documentation</a>.
+                    <a href="http://ceylon-lang.org" title="Go to Ceylon home page"><i class="icon-home"></i>Ceylon documentation</a>.
                 </p>
             </div>
             <div class="row show-grid">
                 <div class="span4">
                     <div class="box">
                         <h3>Statistics</h3>
-                        <div><a href="https://github.com/ceylon/repositories" id="repositories"></a></div>
-                        <div><a href="https://github.com/ceylon" id="members"></a></div>
+                        <div><a href="https://github.com/ceylon/repositories" title="View all Ceylon repositories on GitHub" id="repositories"></a></div>
+                        <div><a href="https://github.com/ceylon" title="View Ceylon members on GitHub" id="members"></a></div>
                     </div>
                 </div>
                 <div class="span8">
                     <div class="box">
-                        <h3>Recently updated <a href="https://github.com/ceylon/repositories">View all</a></h3>
+                        <h3>Recently updated <a href="https://github.com/ceylon/repositories" title="View all Ceylon repositories on GitHub">View all</a></h3>
                         <div id="updated"></div>
                     </div>
                 </div>
