@@ -39,3 +39,12 @@ h3 a {
  font-size: 12px;
  font-weight: normal;
 }
+
+.logo {
+ float: left;
+ margin-right: 2em;
+}
+
+.page-header .links {
+ float: right;
+}
