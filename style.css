@@ -40,6 +40,17 @@ h3 a {
  font-weight: normal;
 }
 
+h3 a.repo-name {
+ font-size: 18px;
+ font-weight: bold;
+ color: rgb(51, 51, 51);
+}
+
+h3 a.repo-name:hover {
+ color: rgb(51, 51, 51);
+ text-decoration: underline;
+}
+
 .logo {
  float: left;
  margin-right: 2em;
