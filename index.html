@@ -74,7 +74,9 @@ function addRepo(container, repo){
 	var span = jQuery("<div class='span4' title='Click to view project on GitHub''/>");
 	var div = jQuery("<div class='repo'/>").appendTo(span);
 	
-	jQuery("<h3/>").text(repo.name).appendTo(div);
+    var h3 = jQuery("<h3/>");
+    jQuery("<a class='repo-name' href='" + repo.html_url + "'/>").text(repo.name).appendTo(h3);
+    h3.appendTo(div);
     jQuery("<p/>").text(repo.description).appendTo(div);
 
     repoInfo(repo).appendTo(div);
