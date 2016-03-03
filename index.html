@@ -24,14 +24,18 @@ function loadRepos(data, textStatus, jqXHR){
     var container = jQuery("#container");
     var row = null;
     var repositories = data.data;
+    var idx = 0;
     repositories.sort(byName);
     jQuery.each(repositories, function(i, repo){
-        if((i % 3) == 0){
-            if(row != null)
-                row.appendTo(container);
-            row = jQuery("<div class='repos row show-grid'/>");
+        if (repo.description.indexOf("DEPRECATED") < 0) {
+            if((idx % 3) == 0){
+                if(row != null)
+                    row.appendTo(container);
+                row = jQuery("<div class='repos row show-grid'/>");
+            }
+            addRepo(row, repo);
+            idx++;
         }
-        addRepo(row, repo);
     });
     if(row != null)
         row.appendTo(container);
