@@ -25,36 +25,36 @@ function loadRepos(data, textStatus, jqXHR){
     var row = null;
     var repositories = data.data;
     repositories.sort(byName);
-	jQuery.each(repositories, function(i, repo){
-		if((i % 3) == 0){
-			if(row != null)
-				row.appendTo(container);
-			row = jQuery("<div class='repos row show-grid'/>");
-		}
-		addRepo(row, repo);
-	});
+    jQuery.each(repositories, function(i, repo){
+        if((i % 3) == 0){
+            if(row != null)
+                row.appendTo(container);
+            row = jQuery("<div class='repos row show-grid'/>");
+        }
+        addRepo(row, repo);
+    });
     if(row != null)
         row.appendTo(container);
     jQuery("#repositories").text(plural(repositories.length, " repository", " repositories"));
     repositories.sort(byDate);
     var updated = jQuery("#updated");
     jQuery.each(repositories.slice(0, 3), function(i, repo){
-    	var div = jQuery("<div/>");
-    	jQuery("<a/>").attr({href: repo.html_url, title: "View project on GitHub"}).text(repo.name).appendTo(div);
-    	div.append(" ");
-    	repoInfo(repo).appendTo(div);
-    	div.appendTo(updated);
+        var div = jQuery("<div/>");
+        jQuery("<a/>").attr({href: repo.html_url, title: "View project on GitHub"}).text(repo.name).appendTo(div);
+        div.append(" ");
+        repoInfo(repo).appendTo(div);
+        div.appendTo(updated);
     });
 }
 
 function date(text){
-	var d = new Date(text);
-	return d.getDate() + "/" + (d.getMonth()+1) +"/"+ d.getFullYear();
+    var d = new Date(text);
+    return d.getDate() + "/" + (d.getMonth()+1) +"/"+ d.getFullYear();
 }
 
 function plural(count, text, pluralText){
-	if(count > 1)
-	    return pluralText ? count + pluralText : count + text + "s";
+    if(count > 1)
+        return pluralText ? count + pluralText : count + text + "s";
     return count + text;
 }
 
@@ -71,9 +71,9 @@ function repoInfo(repo){
 }
 
 function addRepo(container, repo){
-	var span = jQuery("<div class='span4' title='Click to view project on GitHub''/>");
-	var div = jQuery("<div class='repo'/>").appendTo(span);
-	
+    var span = jQuery("<div class='span4' title='Click to view project on GitHub''/>");
+    var div = jQuery("<div class='repo'/>").appendTo(span);
+    
     var h3 = jQuery("<h3/>");
     jQuery("<a class='repo-name' href='" + repo.html_url + "'/>").text(repo.name).appendTo(h3);
     h3.appendTo(div);
@@ -86,7 +86,7 @@ function addRepo(container, repo){
     fork.append("Fork");
     
     div.click(function(){
-    	document.location = repo.html_url;
+        document.location = repo.html_url;
     });
     
     container.append(span);
