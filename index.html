@@ -103,7 +103,7 @@ function loadMembers (result) {
 }
 
 jQuery(function (){
-    jQuery.getJSON("https://api.github.com/orgs/ceylon/repos?callback=?", loadRepos);
+    jQuery.getJSON("https://api.github.com/orgs/ceylon/repos?per_page=100&callback=?", loadRepos);
     jQuery.getJSON("https://api.github.com/orgs/ceylon/members?callback=?", loadMembers);
 });
         </script>
